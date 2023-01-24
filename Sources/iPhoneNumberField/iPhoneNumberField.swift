@@ -201,12 +201,12 @@ public struct iPhoneNumberField: UIViewRepresentable {
             gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
             gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
             
-            UIGraphicsBeginImageContext(gradient.bounds.size)
-            gradient.render(in: UIGraphicsGetCurrentContext()!)
-            let image = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            uiView.textColor = UIColor(patternImage: image!)
+            let renderer = UIGraphicsImageRenderer(bounds: uiView.bounds)
+            let renderedImage = renderer.image { ctx in
+                gradient.render(in: ctx.cgContext)
+            }
+
+            uiView.textColor = UIColor(patternImage: renderedImage)
 //
 //            gradient.mask = uiView.layer
         }
