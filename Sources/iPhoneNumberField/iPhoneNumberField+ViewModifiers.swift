@@ -60,6 +60,12 @@ public extension iPhoneNumberField {
         view.textColor = color
         return view
     }
+    
+    func foregroundGradient(_ colors: [UIColor]) -> Self {
+        var view = self
+        view.textColors = colors
+        return view
+    }
 
     private func nilForegroundColor() -> Self {
         var view = self

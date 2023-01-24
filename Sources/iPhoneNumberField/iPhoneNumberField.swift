@@ -73,6 +73,8 @@ public struct iPhoneNumberField: UIViewRepresentable {
     /// The color of the text of the phone number field. 🎨
     internal var textColor: UIColor?
     
+    internal var textColors: [UIColor] = []
+    
     /// The color of the phone number field's cursor and highlighting. 🖍
     internal var accentColor: UIColor?
 
@@ -190,6 +192,21 @@ public struct iPhoneNumberField: UIViewRepresentable {
         }
         if let textAlignment = textAlignment {
             uiView.textAlignment = textAlignment
+        }
+        
+        if !textColors.isEmpty {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.frame = uiView.bounds
+            gradientLayer.colors = textColors.map(\.cgColor)
+            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+            
+            let renderer = UIGraphicsImageRenderer(bounds: uiView.bounds)
+            let image = renderer.image { ctx in
+                gradientLayer.render(in: ctx.cgContext)
+            }
+            
+            uiView.textColor = UIColor(patternImage: image)
         }
 
         if isFirstResponder {
