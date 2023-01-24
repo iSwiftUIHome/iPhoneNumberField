@@ -201,8 +201,7 @@ public struct iPhoneNumberField: UIViewRepresentable {
             gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
             gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
             
-            uiView.layer.addSublayer(gradient)
-            
+            gradient.mask = uiView.layer
         }
 
         if isFirstResponder {
