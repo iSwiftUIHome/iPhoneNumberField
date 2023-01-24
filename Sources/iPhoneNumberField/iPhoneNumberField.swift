@@ -195,13 +195,13 @@ public struct iPhoneNumberField: UIViewRepresentable {
         }
         
         if !textColors.isEmpty {
-            let gradient = CAGradientLayer()
-            gradient.frame = uiView.bounds
-            gradient.colors = textColors
-            gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
-            gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
-            
-            gradient.mask = uiView.layer
+//            let gradient = CAGradientLayer()
+//            gradient.frame = uiView.bounds
+//            gradient.colors = textColors
+//            gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+//            gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+//            
+//            gradient.mask = uiView.layer
         }
 
         if isFirstResponder {
